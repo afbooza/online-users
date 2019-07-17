@@ -2,40 +2,20 @@ import React from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-
 import './UserList.css'
 
-const User = (user) => (
+const User = ({user}) => (
     <ListItem button>
-        <ListItemText primary="hi" />
+        <ListItemText primary={user.name} />
     </ListItem>
 );
 
-const UserList = () => {
-    //setState Object
-    const [usersObj, setUser] = React.useState({
-        usersList: [
-            { name: "Antonio" },
-            { name: "Jeffrey" },
-            { name: "Sarah" },
-            { name: "Sam" },
-            { name: "Paul" }
-        ],
-        showUsers: true
-    });
-
-    //need to pass this over to the Footer component
-    const toggleDisplayOfUsers = () => {
-        console.log('toggle users');
-        setUser(usersObj.showUsers = !usersObj.showUsers);
-    }
-
+const UserList = ({usersObj, toggleDisplayOfUsers}) => {
     if (usersObj.showUsers === true) {
+        console.log(JSON.stringify(usersObj));
         //render component
         return (
-
             <div className="user-list">
-
                 <List aria-label="Online Users">
                     {usersObj.usersList.map((user, index) => (
                         <User key={index} user={user} />

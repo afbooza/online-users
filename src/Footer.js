@@ -28,7 +28,7 @@ const Footer = ({toggleDisplayOfUsers}) => {
   }
 
   return (
-    <footer id="footer">
+    <footer useClass="footer">
       <StylesProvider injectFirst>
         <BottomNavigation 
           className="bottom-navigation"

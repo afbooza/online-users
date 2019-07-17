@@ -10,10 +10,8 @@ const User = ({user}) => (
     </ListItem>
 );
 
-const UserList = ({usersObj, toggleDisplayOfUsers}) => {
-    if (usersObj.showUsers === true) {
-        console.log(JSON.stringify(usersObj));
-        //render component
+const UserList = ({usersObj}) => {
+    if (usersObj.showUsers === true) {        
         return (
             <div className="user-list">
                 <List aria-label="Online Users">
@@ -25,7 +23,7 @@ const UserList = ({usersObj, toggleDisplayOfUsers}) => {
         );
     }
     else {
-        return null;
+        return <div className="user-list"></div>
     }
 }
 

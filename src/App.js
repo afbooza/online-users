@@ -22,12 +22,14 @@ function App() {
   //need to pass this over to the Footer component
   const toggleDisplayOfUsers = () => {
     console.log('toggle users');
-    setUser(usersObj.showUsers = !usersObj.showUsers);
+    setUser({
+      usersList: usersObj.usersList,
+      showUsers: !usersObj.showUsers
+    });
   }
 
-
   return (
-    <div>
+    <div useClass="body">
       <UserList usersObj={usersObj}
       ></UserList>
       <Footer toggleDisplayOfUsers = {toggleDisplayOfUsers} ></Footer>

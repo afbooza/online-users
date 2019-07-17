@@ -1,8 +1,5 @@
-footer{
-    flex-grow:1;
-    flex-direction:row;
-    display:fixed;
-    top:100px;
+.footer{
+    height: 50px;
 }
 
 .bottom-navigation{

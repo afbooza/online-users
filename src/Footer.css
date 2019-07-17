@@ -1,0 +1,20 @@
+footer{
+    flex-grow:1;
+    flex-direction:row;
+    display:fixed;
+    top:100px;
+}
+
+.bottom-navigation{
+    text-align:center;
+    background-color:grey;
+    color:black;
+}
+
+.MuiSvgIcon-root{
+    color:green
+}
+
+.button--online-users{
+    color:green;
+}

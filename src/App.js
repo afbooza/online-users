@@ -3,7 +3,8 @@ import './App.css';
 import UserList from './UserList';
 import OnlineNav from './OnlineNav';
 import { StylesProvider } from '@material-ui/styles';
-import getUsers from './mock/getUsers';
+//import getUsers from './mock/getUsers';
+import Axios from 'axios';
 
 function App() {
 
@@ -13,19 +14,27 @@ function App() {
   const [showUsers, setShowUsers] = React.useState(false);
   const [navStateClass, setNavStateClass] = React.useState("minimized");
 
-  React.useEffect(() => {
-    const getUserData = async () => {
-      try {
-        const users = await getUsers();
+  //React.useEffect(() => {
+    Axios.get(`http://localhost:3000/data`)
+      .then(res => {
+        const users = res.data;
         if (users)
           setUsersReady(true);
-        setUserList(users);
-      } catch (error) {
-        alert("Failed to fetch users. " + error);
-      }
-    }
-    getUserData();
-  });
+          setUserList(users);
+      })
+  //});
+    // const getUserData = async () => {
+    //   try {
+    //     const users = await getUsers();
+    //     if (users)
+    //       setUsersReady(true);
+    //     setUserList(users);
+    //   } catch (error) {
+    //     alert("Failed to fetch users. " + error);
+    //   }
+    // }
+    // getUserData();
+  
 
   const toggleDisplayOfUsers = () => {
     setShowUsers(!showUsers);

@@ -6,6 +6,8 @@
     width:25%;
     transition:transform 2s;
     overflow-y:scroll;
+    background-color:white;
+    z-index: 999;
 }
 .user-list--expanded{
     transform:translateY(-400px);

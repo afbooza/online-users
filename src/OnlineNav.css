@@ -16,7 +16,7 @@
 
 .bottom-nav--expanded {
     transform:translateY(-400px);
-    background-color:rgba(32, 138, 204, 0.598);
+    background-color:rgba(32, 138, 204);
 }
 
 .bottom-nav__button__online-label {

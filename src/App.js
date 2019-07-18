@@ -31,7 +31,7 @@ function App() {
         const users = await getUsers();
         if (users)
           setUsersReady(true);
-          
+
         setUserList(users);
       } catch (error) {
         alert("Failed to fetch users. " + error);
@@ -48,6 +48,12 @@ function App() {
   return (
     <StylesProvider injectFirst>
       <div className="body">
+        <article>
+          <h1>Welcome to the Online Users app!</h1>
+          <p>The component will be disabled until the users load after 2 seconds. At this point it will render
+            green and you can expand to see the available users
+        </p>
+        </article>
 
         <OnlineNav
           toggleDisplayOfUsers={toggleDisplayOfUsers}

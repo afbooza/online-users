@@ -10,13 +10,20 @@ const OnlineNav = ({ toggleDisplayOfUsers, usersReady, navStateClass }) => {
 
   let iconMod = "disabled";
 
-  if (usersReady === true) {
+  if (usersReady) {
     iconMod = "enabled";
   }
 
   const handleToggleUsers = () => {
-    toggleDisplayOfUsers();
-    buttonLabel === "Expand Online Users" ? setButtonLabel("Minimize Online Users") : setButtonLabel("Expand Online Users")
+    if(usersReady)
+    {
+      toggleDisplayOfUsers();
+      buttonLabel === "Expand Online Users" ? setButtonLabel("Minimize Online Users") : setButtonLabel("Expand Online Users")
+    }
+    else {
+      return;
+    }
+    
   }
 
   return (

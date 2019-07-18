@@ -3,8 +3,8 @@ import './App.css';
 import UserList from './UserList';
 import OnlineNav from './OnlineNav';
 import { StylesProvider } from '@material-ui/styles';
-//import getUsers from './mock/getUsers';
-import Axios from 'axios';
+import getUsers from './mock/getUsers';
+//import Axios from 'axios';
 
 function App() {
 
@@ -12,9 +12,9 @@ function App() {
   const [userList, setUserList] = React.useState([]);
   const [usersReady, setUsersReady] = React.useState(false);
   const [showUsers, setShowUsers] = React.useState(false);
-  const [navStateClass, setNavStateClass] = React.useState("minimized");
 
   //CALL TO JSON-SERVER
+  /* React.useEffect(() => {
     Axios.get(`http://localhost:3000/data`)
       .then(res => {
         const users = res.data;
@@ -22,40 +22,41 @@ function App() {
           setUsersReady(true);
           setUserList(users);
       })
-  
-//ANOTHER WAY TO GET STATIC DATA
-    /* React.useEffect(() => {
-      const getUserData = async () => {
-        try {
-          const users = await getUsers();
-          if (users)
-            setUsersReady(true);
-          setUserList(users);
-        } catch (error) {
-          alert("Failed to fetch users. " + error);
-        }
+    },[]) */
+
+  //GET STATIC DATA
+  React.useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const users = await getUsers();
+        if (users)
+          setUsersReady(true);
+          
+        setUserList(users);
+      } catch (error) {
+        alert("Failed to fetch users. " + error);
       }
-      getUserData();
-      }); */
-  
+    }
+    getUserData();
+  }, []);
+
 
   const toggleDisplayOfUsers = () => {
     setShowUsers(!showUsers);
-    navStateClass === "minimized" ? setNavStateClass("expanded") : setNavStateClass("minimized");
   }
 
   return (
     <StylesProvider injectFirst>
       <div className="body">
-      
+
         <OnlineNav
           toggleDisplayOfUsers={toggleDisplayOfUsers}
-          navStateClass={navStateClass}
-          usersReady={usersReady}/>
+          navStateClass={showUsers ? 'expanded' : 'minimized'}
+          usersReady={usersReady} />
         <UserList
-            userList={userList}
-            showUsers={showUsers}
-            navStateClass={navStateClass}/>
+          userList={userList}
+          showUsers={showUsers}
+          navStateClass={showUsers ? 'expanded' : 'minimized'} />
 
       </div>
     </StylesProvider>

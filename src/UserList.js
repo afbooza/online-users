@@ -19,7 +19,7 @@ const User = ({user}) => (
 );
 
 const UserList = ({userList, showUsers, navStateClass}) => {
-    if (showUsers) {        
+    if (showUsers ? navStateClass = "expanded" : navStateClass = "minimized") {        
         return (
             <div className={'user-list user-list--' + navStateClass}>
                 <List>

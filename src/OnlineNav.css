@@ -6,6 +6,7 @@
     height: 56px;
     transition:transform 2s; 
     position:fixed;
+    min-width:200px;
     bottom:0;
     z-index:9999;
 }

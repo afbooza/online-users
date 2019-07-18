@@ -1,12 +1,15 @@
 .user-list{
     position:fixed;
-    height:4rem;
+    bottom:-400px;
+    height:400px;
+    min-width:200px;
     width:25%;
     transition:transform 2s;
+    overflow-y:scroll;
 }
 .user-list--expanded{
-    transform:translateY(17.875rem);
+    transform:translateY(-400px);
 }
 .user-list--minimized{
-    transform:translateY(42.875rem);
+    transform:translateY(0px);
 }

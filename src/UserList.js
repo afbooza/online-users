@@ -23,8 +23,7 @@ const UserList = ({userList, showUsers, navStateClass}) => {
         return (
             <div className={'user-list user-list--' + navStateClass}>
                 <List>
-                    {userList.map((user, index) => (
-                        
+                    {userList.map((user, index) => (  
                         <User key={index} user={user} />
                     ))}
                 </List>

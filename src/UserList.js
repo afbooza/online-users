@@ -23,7 +23,7 @@ const UserList = ({userList, showUsers, navStateClass}) => {
         );
     }
     else {
-        return <div className={'user-list--' + navStateClass}></div>
+        return <div className={'user-list user-list--' + navStateClass}></div>
     }
 }
 

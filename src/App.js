@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import UserList from './UserList';
-import Footer from './Footer';
+import OnlineNav from './OnlineNav';
 import { StylesProvider } from '@material-ui/styles';
 import getUsers from './mock/getUsers';
 
@@ -17,9 +17,9 @@ function App() {
     const getUserData = async () => {
       try {
         const users = await getUsers();
-        if(users)
+        if (users)
           setUsersReady(true);
-          setUserList(users);
+        setUserList(users);
       } catch (error) {
         alert("Failed to fetch users. " + error);
       }
@@ -29,18 +29,22 @@ function App() {
 
   const toggleDisplayOfUsers = () => {
     setShowUsers(!showUsers);
-    navStateClass === "minimized" ? setNavStateClass("expanded") : setNavStateClass("minimized"); 
+    navStateClass === "minimized" ? setNavStateClass("expanded") : setNavStateClass("minimized");
   }
 
   return (
     <StylesProvider injectFirst>
       <div className="body">
-        <UserList 
-          userList={userList} 
-          showUsers={showUsers} 
-          navStateClass={navStateClass}/>
-        <Footer toggleDisplayOfUsers={toggleDisplayOfUsers} 
-          navStateClass = {navStateClass} usersReady = {usersReady} />
+      
+        <OnlineNav
+          toggleDisplayOfUsers={toggleDisplayOfUsers}
+          navStateClass={navStateClass}
+          usersReady={usersReady}/>
+        <UserList
+            userList={userList}
+            showUsers={showUsers}
+            navStateClass={navStateClass}/>
+
       </div>
     </StylesProvider>
   );

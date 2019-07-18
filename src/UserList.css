@@ -1,6 +1,14 @@
-.user-list--minimized {
-    min-height: calc(100vh - 56px);
+.user-list{
+    position:fixed;
+    height:400px;
+    width:25%;
+    transition:transform 2s;
+
 }
 .user-list--expanded{
-    margin-top:56px;
+    transform:translateY(286px);
+}
+.user-list--minimized{
+
+    transform:translateY(686px);
 }

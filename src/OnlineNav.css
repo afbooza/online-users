@@ -2,22 +2,19 @@
 .bottom-nav {
     text-align:center;
     background-color:rgba(128, 128, 128, 0.598);
-    width:100%;
+    width:25%;
     height: 56px;
-    /* transition:position 2s; */
+    transition:transform 2s; 
+    position:fixed;
+    bottom:0;
+    z-index:9999;
 }
 .bottom-nav--minimized {
-    transform:translateY(24px);
-    
+    transform:translateY(0px)
 }
-.bottom-nav--minimized:hover {
-    transition:transform 1s;
-    -webkit-transform:translateY(0px);
 
-}
 .bottom-nav--expanded {
-    position:absolute;
-    top:1px;
+    transform:translateY(-400px);
     background-color:rgba(32, 138, 204, 0.598);
 }
 

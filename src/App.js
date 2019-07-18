@@ -14,7 +14,7 @@ function App() {
   const [showUsers, setShowUsers] = React.useState(false);
   const [navStateClass, setNavStateClass] = React.useState("minimized");
 
-  //React.useEffect(() => {
+  //CALL TO JSON-SERVER
     Axios.get(`http://localhost:3000/data`)
       .then(res => {
         const users = res.data;
@@ -22,18 +22,21 @@ function App() {
           setUsersReady(true);
           setUserList(users);
       })
-  //});
-    // const getUserData = async () => {
-    //   try {
-    //     const users = await getUsers();
-    //     if (users)
-    //       setUsersReady(true);
-    //     setUserList(users);
-    //   } catch (error) {
-    //     alert("Failed to fetch users. " + error);
-    //   }
-    // }
-    // getUserData();
+  
+//ANOTHER WAY TO GET STATIC DATA
+    /* React.useEffect(() => {
+      const getUserData = async () => {
+        try {
+          const users = await getUsers();
+          if (users)
+            setUsersReady(true);
+          setUserList(users);
+        } catch (error) {
+          alert("Failed to fetch users. " + error);
+        }
+      }
+      getUserData();
+      }); */
   
 
   const toggleDisplayOfUsers = () => {

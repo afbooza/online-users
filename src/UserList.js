@@ -10,12 +10,12 @@ const User = ({user}) => (
     </ListItem>
 );
 
-const UserList = ({usersObj}) => {
-    if (usersObj.showUsers === true) {        
+const UserList = ({userList, showUsers, navStateClass}) => {
+    if (showUsers) {        
         return (
-            <div className="user-list">
-                <List aria-label="Online Users">
-                    {usersObj.usersList.map((user, index) => (
+            <div className={'user-list user-list--' + navStateClass}>
+                <List>
+                    {userList.map((user, index) => (
                         <User key={index} user={user} />
                     ))}
                 </List>
@@ -23,7 +23,7 @@ const UserList = ({usersObj}) => {
         );
     }
     else {
-        return <div className="user-list"></div>
+        return <div className={'user-list--' + navStateClass}></div>
     }
 }
 

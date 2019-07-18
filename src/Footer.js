@@ -3,48 +3,36 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import PersonIcon from '@material-ui/icons/Person';
 import './Footer.css';
-import { StylesProvider } from "@material-ui/styles";
 
-const Footer = ({toggleDisplayOfUsers}) => {
-  const [value, setValue] = React.useState(0);
+const Footer = ({ toggleDisplayOfUsers, usersReady, navStateClass }) => {
 
-  // Idea to create element from scratch
-  // const openUserList = () => {
-  //   let chatWindow = document.createElement("div");
-  //   let chatWindowContent = document.createTextNode("hey");
-  //   chatWindow.appendChild(chatWindowContent);
-  //   console.log('open user list');
-  //   let root = document.getElementById("root");
-  //   let footer = document.getElementById("footer");
-  //   root.insertBefore(chatWindow, footer );
-  // }
+  const [buttonLabel, setButtonLabel] = React.useState("Expand Online Users");
 
-  //Need to put this onto the <BottomNavigationAction element> 
-  //after getting from the UserList component --> onClick={() => toggleDisplayOfUsers}
+  let iconMod = "disabled";
+  
+
+  if(usersReady === true) {
+    iconMod="enabled";
+  }
 
   const handleToggleUsers = () => {
-    console.log("handle toggle in Footer Comp");
     toggleDisplayOfUsers();
+    buttonLabel === "Expand Online Users" ?setButtonLabel("Minimize Online Users") : setButtonLabel("Expand Online Users")
   }
 
   return (
-    <footer useClass="footer">
-      <StylesProvider injectFirst>
-        <BottomNavigation 
-          className="bottom-navigation"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-          showLabels
-        >
-          <BottomNavigationAction 
-            className="bottom-navigation button--online-users" 
-            onClick={() => handleToggleUsers()}
-            label="Online Users" 
-            icon={<PersonIcon />} />
-        </BottomNavigation>
-      </StylesProvider>
+    <footer>
+      <BottomNavigation
+        className={'bottom-nav bottom-nav--'+navStateClass}
+        showLabels
+      >
+        <BottomNavigationAction
+          onClick={() => handleToggleUsers()}
+          label={buttonLabel}
+          classes={{label:'bottom-nav__button__online-label'}}
+          value="online" 
+          icon={<PersonIcon className={'bottom-nav__button__online-label-icon--' + iconMod}/>} />
+      </BottomNavigation>
     </footer>
   );
 }

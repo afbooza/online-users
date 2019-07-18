@@ -2,38 +2,47 @@ import React from 'react';
 import './App.css';
 import UserList from './UserList';
 import Footer from './Footer';
-
-
+import { StylesProvider } from '@material-ui/styles';
+import getUsers from './mock/getUsers';
 
 function App() {
 
-  //setState Object
-  const [usersObj, setUser] = React.useState({
-    usersList: [
-      { name: "Antonio" },
-      { name: "Jeffrey" },
-      { name: "Sarah" },
-      { name: "Sam" },
-      { name: "Paul" }
-    ],
-    showUsers: true
+  //set state
+  const [userList, setUserList] = React.useState([]);
+  const [usersReady, setUsersReady] = React.useState(false);
+  const [showUsers, setShowUsers] = React.useState(false);
+  const [navStateClass, setNavStateClass] = React.useState("minimized");
+
+  React.useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const users = await getUsers();
+        if(users)
+          setUsersReady(true);
+          setUserList(users);
+      } catch (error) {
+        alert("Failed to fetch users. " + error);
+      }
+    }
+    getUserData();
   });
 
-  //need to pass this over to the Footer component
   const toggleDisplayOfUsers = () => {
-    console.log('toggle users');
-    setUser({
-      usersList: usersObj.usersList,
-      showUsers: !usersObj.showUsers
-    });
+    setShowUsers(!showUsers);
+    navStateClass === "minimized" ? setNavStateClass("expanded") : setNavStateClass("minimized"); 
   }
 
   return (
-    <div useClass="body">
-      <UserList usersObj={usersObj}
-      ></UserList>
-      <Footer toggleDisplayOfUsers = {toggleDisplayOfUsers} ></Footer>
-    </div>
+    <StylesProvider injectFirst>
+      <div className="body">
+        <UserList 
+          userList={userList} 
+          showUsers={showUsers} 
+          navStateClass={navStateClass}/>
+        <Footer toggleDisplayOfUsers={toggleDisplayOfUsers} 
+          navStateClass = {navStateClass} usersReady = {usersReady} />
+      </div>
+    </StylesProvider>
   );
 }
 

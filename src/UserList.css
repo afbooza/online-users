@@ -1,3 +1,6 @@
-.user-list{
+.user-list--minimized {
     min-height: calc(100vh - 56px);
+}
+.user-list--expanded{
+    margin-top:56px;
 }

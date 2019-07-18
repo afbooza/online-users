@@ -24,9 +24,10 @@ const OnlineNav = ({ toggleDisplayOfUsers, usersReady, navStateClass }) => {
     <BottomNavigation
       className={'bottom-nav bottom-nav--' + navStateClass}
       showLabels
+      onClick={() => handleToggleUsers()}
     >
       <BottomNavigationAction
-        onClick={() => handleToggleUsers()}
+        
         label={buttonLabel}
         classes={{ label: 'bottom-nav__button__online-label' }}
         value="online"

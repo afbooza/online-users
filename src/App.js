@@ -31,8 +31,7 @@ function App() {
         const users = await getUsers();
         if (users)
           setUsersReady(true);
-
-        setUserList(users);
+          setUserList(users);
       } catch (error) {
         alert("Failed to fetch users. " + error);
       }

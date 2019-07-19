@@ -8,25 +8,31 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('OnlineNav component', () => {
     it('should render the bottom navigation', () => {
-      const wrapper = shallow(<OnlineNav />);
-      const bottomNavigation = wrapper.find('BottomNavigation');
-      expect(bottomNavigation).toBeDefined();
+        const wrapper = shallow(<OnlineNav />);
+        const bottomNavigation = wrapper.find('BottomNavigation');
+        expect(bottomNavigation).toBeDefined();
     });
     it('should assert the label of the button when loaded', () => {
         const wrapper = mount(<OnlineNav />);
         expect(wrapper.find(BottomNavigationAction).props().label).toBe('Expand Online Users');
     });
-    it('should assert the label of the button after clicked after users are loaded', () => {
+    it('should assert the click of the button is initially by checking whether the label changes', () => {
         const wrapper = mount(<OnlineNav />);
         const button = wrapper.find(BottomNavigationAction);
-        setTimeout(() => {
-            button.simulate('click');
-            expect(wrapper.find(BottomNavigationAction).props().label).toBe('Minimize Online Users');
-        }, 3000);        
+        button.simulate('click');
+        expect(wrapper.find(BottomNavigationAction).props().label).toBe('Expand Online Users');
     });
-
-    // it('should assert the label of the button when loaded', () => {
-    //     const wrapper = mount(<OnlineNav />);
-    //     expect(wrapper.state().buttonLabel).toBe('Expand Online Users');
-    // })
-  });
+    it('should assert the label of the button after clicked after users are loaded', (done) => {
+        const wrapper = mount(<OnlineNav />);
+        const button = wrapper.find(BottomNavigationAction);
+        const test = async () => {
+            await button.simulate('click');
+            expect(wrapper.find(BottomNavigationAction).props().label).toBe('Minimize Online Users');
+            expect(wrapper.props().usersList.length).toBeGreaterThan(1);
+        }
+        setTimeout(() => {
+            test();
+            done();
+        }, 4000);
+    });
+});

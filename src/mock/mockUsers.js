@@ -1,17 +1,17 @@
 const data = [
-    { "name": "Antonio Smith"
+    { "name": "Baker Mayfield"
     },
-    { "name": "Jeffrey Alexander"
+    { "name": "Phil Dawson"
     },
-    { "name": "Sarah Walker"
+    { "name": "Francisco Lindor"
     },
-    { "name": "Sam Peterman"
+    { "name": "Bernie Kosar"
     },
-    { "name": "Paul Knox"
+    { "name": "Albert Bell"
     },
-    { "name": "Antonio Smith"
+    { "name": "JR Smith"
     },
-    { "name": "Jeffrey Alexander"
+    { "name": "Tom Hamilton"
     },
     { "name": "Sarah Walker"
     },

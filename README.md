@@ -7,12 +7,12 @@ Navigate to http://localhost:3100/
 ### TEST THE APP
 npm test, a
 
-##MOCK DATA:
+###MOCK DATA:
 
-#OPTION 1
+###OPTION 1
 App spoofs a Promise/timeout to the server with a 2 second delay. Works as is. 
 
-#OPTION 2 RUN JSON-SERVER
+###OPTION 2 RUN JSON-SERVER
 Comment out under where it says GET STATIC DATA and uncomment the above method line 17 to 25 and the Axios import statement.
 
 Install json-server:

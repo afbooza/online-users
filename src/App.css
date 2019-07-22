@@ -1,6 +1,10 @@
 .body{
     display:flex;
-    flex-direction: column;
+    flex-direction: column;    
+}
+article{
+    text-align: center;
+    padding: 60px;
 }
 
 

@@ -49,7 +49,7 @@ function App() {
       <div className="body">
         <article>
           <h1>Welcome to the Online Users app!</h1>
-          <p>The component will be disabled until the users load after 2 seconds. At this point it will render
+          <p>The component will be disabled until the users load after 2 seconds. At this point the icon will render
             green and you can expand to see the available users. Although I primarily write applications in Angular,
             I decided to build this application in React. I hope this showcases my ability to quickly learn new software
             and my dedication to completing tasks given unfamiliar requirements.             
